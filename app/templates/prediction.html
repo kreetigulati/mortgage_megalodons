@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/styles.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+
+    <title>Mortgage Megalodons</title>
+</head>
+<nav class="navbar navbar-light" style="background-color: #ffffff;">
+    <div class="col-md-6">
+        <a class="navbar-format" href="{{ url_for('home')}}"> Mortgage Megalodons </a>
+    </div>
+    <div class="col-md-6">
+        <ul class="nav justify-content-end">
+            <a class="nav-item nav-link" style="color: #464660;" href="{{ url_for('prediction')}}">Your Prediction</a>
+            <a class="nav-item nav-link" style="color: #464660;" href="{{ url_for('model')}}">The Model</a>
+        </ul>
+</nav>
+<body>
+    <div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 col-md-push-5">
+						<div class="booking-cta">
+							<h1>Find Your Result!</h1>
+							<h6 style="color: whitesmoke; padding: 2%;"> Complete this form to better understand the likelihood of your mortgage being approved or declined, as well as how to improve your profile so that you can have a stronger application. 
+                            </h6>
+						</div>
+					</div>
+					<div class="col-md-5 col-md-pull-8">
+						<div class="booking-form">
+							<form>
+								<div class="form-group">
+									<span class="form-label">Loan Amount</span>
+									<input id="input-loan" class="form-control" type="number" placeholder="Enter the desired loan amount.">
+								</div>
+                                <div class="form-group">
+									<span class="form-label">Property Value</span>
+									<input class="form-control" type="number" placeholder="Enter the estimated property value.">
+								</div>
+                                <div class="form-group">
+									<span class="form-label">What is your annual income?</span>
+									<input class="form-control" type="number" placeholder="Enter your annual income.">
+								</div>
+                                <div class="form-group">
+                                    <span class="form-label">Select your debt to income ratio.</span>
+                                    <select id="input-debtratio" class="form-control">
+                                        <option>less than 20%</option>
+                                        <option>20%-29%</option>
+                                        <option>30%-35%</option>
+                                        <option>36%-49%</option>
+                                        <option>50%-60%</option>
+                                        <option>>60%</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-label">What is your age group?</span>
+                                    <select id="input-appage" class="form-control">
+                                        <option> less than 25</option>
+                                        <option>option b</option>
+                                        <option>35-44</option>
+                                        <option>option d</option>
+                                        <option>option e</option>
+                                        <option>option f</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-label">Select your race.</span>
+                                    <select class="form-control">
+                                        <option> a</option>
+                                        <option> b</option>
+                                        <option>c</option>
+                                        <option> d</option>
+                                        <option> e</option>
+                                        <option> f</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+								<div class="form-btn">
+									<button id="click-me">Check Result!</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+    <script src="../static/plots/index.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../static/json/combined_encoded.json"></script>
+    <script type="text/javascript" src="../static/data/encoded_mortgage2.csv"></script>
+
+</body>
+</html>
