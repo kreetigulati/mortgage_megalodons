@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/styles.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
+
+
+    <title>Mortgage Megalodons</title>
+</head>
+<nav class="navbar navbar-light" style="background-color: #ffffff;">
+    <div class="col-md-6">
+        <a class="navbar-format"  href="{{ url_for('home')}}"> Mortgage Megalodons </a>
+    </div>
+    <div class="col-md-6">
+        <ul class="nav justify-content-end">
+        <a class="nav-item nav-link" style="color: #464660;" href="{{ url_for('prediction')}}">Your Prediction</a>
+        <a class="nav-item nav-link" style="color: #464660;" href="{{ url_for('process')}}">The Model</a>
+        </ul>
+</nav>
+<body>
+    <div id="booking" class="section">
+        <div class="row" style="padding-top: 120px;">
+            <div class="col-md-3">
+                <h2 style="color:whitesmoke; margin-left:20%" >About Us</h2>
+            </div>
+            <div class="col-md-3">
+                <h2 style="color:whitesmoke; margin-left:16%">Find A Home</h2>
+            </div>
+            <div class="col-md-3">
+                <h2 style="color:whitesmoke; margin-left:16%">Your Result</h2>
+            </div>
+            <div class="col-md-3">
+                <h2 style="color:whitesmoke; margin-left:16%">The Model</h2>
+            </div>
+        </div>
+        <div class="row" style="padding-left: 30px; padding-top: 30px;">
+            <div class="col-md-3">
+                <div class="hover01 column">
+                    <div>
+                        <figure><a href="{{ url_for('about')}}" ><img src="../static/img/key.png" height="200" width="220"/></a></figure>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="hover01 column">
+                    <div>
+                        <figure><a href="https://www.zillow.com/" target="_blank"><img src="../static/img/house.png" height="200" width="220"/></a></figure>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="hover01 column">
+                    <figure><a href="{{ url_for('prediction')}}"><img src="../static/img/predict.png" height="200" width="220"/></a></figure>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="hover01 column">
+                    <figure><a href="{{url_for('process')}}"><img src="../static/img/stats.png" height="200" width="220"/></a></figure>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="color: whitesmoke; text-align: center; padding-top: 5%;"> Enjoy the Journey!</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

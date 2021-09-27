@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/styles.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Mortgage Megalodons</title>
+</head>
+<nav class="navbar navbar-light" style="background-color: #ffffff;">
+    <div class="col-md-6">
+        <a class="navbar-format" href="{{ url_for('home')}}"> Mortgage Megalodons </a>
+    </div>
+    <div class="col-md-6">
+        <ul class="nav justify-content-end">
+            <a class="nav-item nav-link" style="color: #464660;" href="{{ url_for('prediction')}}">Your Prediction</a>
+            <a class="nav-item nav-link" style="color: #464660;" href="{{ url_for('process')}}">The Model</a>
+        </ul>
+</nav>
+<body style="background-color: #464660;">
+    <div class="row">
+        <h3>About The Model</h3>
+    </div>
+        <div class="col-md-6">
+            <h7 style="padding-left: 10px; color: whitesmoke;">Our steps into cleaning the data and the model.</h7>
+                <div class="row" style="padding: 10%">
+                    <div class="col-md-12">
+                        <div class="hover01 column" style="align-content: center;">
+                            <div>
+                                <figure><img src="../static/img/data.jpg" height="200" width="620"/></figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left: 80%; padding-bottom: 10%;">
+                    <div class="col-md-12">
+                        <div class="hover01 column">
+                            <div>
+                                <figure><img src="../static/img/step.jpg" height="200" width="620"/></figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left: 10%">
+                    <div class="col-md-12">
+                        <div class="hover01 column">
+                            <div>
+                                <figure><img src="../static/img/step2.jpg" height="200" width="620"/></figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

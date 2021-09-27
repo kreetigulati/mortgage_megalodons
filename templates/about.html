@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/styles.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
+​
+​
+    <title>About Mortgage Megalodons</title>
+</head>
+<nav class="navbar navbar-light" style="background-color: #ffffff;">
+    <div class="col-md-6">
+        <a class="navbar-format"  href="{{ url_for('home')}}"> Mortgage Megalodons </a>
+    </div>
+    <div class="col-md-6">
+        <ul class="nav justify-content-end">
+        <a class="nav-item nav-link" style="color: #464660;" href="{{ url_for('prediction')}}">Your Prediction</a>
+        <a class="nav-item nav-link" style="color: #464660;" href="{{ url_for('process')}}">The Model</a>
+        </ul>
+      </div>
+</nav>
+<body>
+  <!-- Section 1 About the Project Main Question and About the Data  -->
+  <div id="booking" class="section">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- About the Project  -->
+        <h1 style="color: whitesmoke; text-align: center;"> About the Project</h1>
+    </div>
+      <div class="col-md-12">
+        <!-- Main Question  -->
+        <h2 style="color: whitesmoke; text-align: center; padding-left: 170px; padding-right: 170px;"> Can the determination of historic mortgage applications help you classify the outcome of future applications?</h2>
+            <h3 style="color: whitesmoke; text-align: center; padding-left: 170px; padding-right: 170px; font-size: medium;">This project seeks to address that question by using real-world records from the Home Mortgage Disclosure Act. 
+                <br> Pulling data from 2018, 2019, and 2020, the cleaned dataset totaled approximately 890,000 rows.</h3>
+      </div>
+    </div>
+    <div class="col-md-12" style="padding-left: 30px; padding-top: 40px;">
+      <!-- About the Data  -->
+      <h1 style="color: whitesmoke; text-align: center;"> About the Data</h1>
+        <h3 style="color: whitesmoke; text-align: center; padding-left: 170px; padding-right: 170px; font-size: medium; line-height: 25px;">
+          Each mortgage is a record of a joint application, no single-person home buyers included. 
+          <br>
+          Applicant and co-applicant information captured includes: age, race, sex, income, debt ratio, ethnicity, and credit. 
+          <br>
+          Home information captured includes: census tract, state, county, property value, construction method.
+          <br>
+          Loan information  includes: loan amount and purpose.
+        </h3>
+    </div>
+  </div>
+<!-- Section 2 About the Model and Limitations  -->
+  <div id="cooking" class="container-fluid" style="background-color: whitesmoke;">
+    <div class="row">
+      <div class="col-md-12" style="color: rgba(70, 70, 96, 0.8); text-align: center; "><h1>About the Model</h1></div>
+        <!-- About the Model  -->
+        <!-- <h1 style="color: whitesmoke; text-align: center; ">About the Model</h1> -->
+        <div class="col-sm-5 col-md-6" style ="color: rgba(70, 70, 96, 0.8); font-size: medium; text-align: center; padding-left: 30px; padding-top: 40px;">Using the tensorflow and sklearn libraries to build the model, we were able to predict the classification of new mortgage applications with 82% accuracy.</div>
+        <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0" style ="color: rgba(70, 70, 96, 0.8); font-size: medium; text-align: center; padding-left: 30px; padding-top: 40px;">The model uses five Dense layers, including three hidden layers and is activated using the tanh function. The optimizer, stochastic gradient descent, gave the best outcome. To prevent overfitting the model uses early stopping and learning rate decay to find the global minimum value.</div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="padding-left: 30px; padding-top: 40px; text-align: center;"><h1 style="color: rgba(70, 70, 96, 0.8); text-align: center;"> Limitations</h1></div>
+        <!-- Limitations  -->
+      <div class="col-sm-5 col-md-6" style ="color: rgba(70, 70, 96, 0.8); font-size: medium; text-align: center; padding-left: 30px; padding-top: 40px;">To clean the data sufficiently for the model, choices had to be made about outliers, joint applications, years, and quantity of data. Ultimately we chose to do join applications, limit the income, and only choose single-family columns.</div>
+      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0" style ="color: rgba(70, 70, 96, 0.8); font-size: medium;text-align: center; padding-left: 30px; padding-top: 40px; padding-bottom: 50px;">Overall loss for the training and testing values is high, .39. Time was the most bounding constraint, with additional time the model could be further tweaking to reduce the loss.</div>
+    </div>
+  </div>
+  <!-- Headshot -->
+  <div id="booking" class="section">
+    <div class="row row-cols-1 row-cols-md-3 g-4" style="text-align:center; padding-left: 50px;">
+      <div class="col">
+        <div class="card h-100" style="max-width: 30rem;">
+          <img src="../static/img/kreeti.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title"><b>Kreeti Gulati</b></h4>
+            Business analyst with a background in marketing, customer service, and skills in Excel, Python, PostgreSQL from University of Southern California’s Viterbi Data Analytics Boot Camp.
+          </div>
+          <div class="card-footer">
+              <a class="btn btn-info" target="_blank" href="https://www.linkedin.com/in/kreeti-gulati-8943a9a7/" role="button">LinkedIn</a>
+              <small class="text-muted"></small>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100" style="max-width: 30rem;">
+          <img src="../static/img/laura.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title"><b>Laura Jimenez</b></h4>
+            Analyst with experience in leading change management and business transformation through data engineering and business intelligence tools.
+          </div>
+          <div class="card-footer">
+              <a class="btn btn-info" target="_blank" href="https://www.linkedin.com/in/laura-jim%C3%A9nez-san%C3%B3/" role="button">LinkedIn</a>
+              <small class="text-muted"></small>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100" style="max-width: 30rem;">
+          <img src="../static/img/jordan.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title"><b>Jordan Shapiro</b></h4>
+            Jordan Shapiro is a civic data analyst with Master’s degree from Aberystwyth university and a Data Analysis certificate from the University of Southern California Viterbi School Boot Camp. Her skills include non-profit management, python, sql, and research modeling.
+          </div>
+          <div class="card-footer">
+              <a class="btn btn-info" target="_blank" href="https://www.linkedin.com/in/shapiro-jordan/" role="button">LinkedIn</a>
+              <small class="text-muted"></small>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+</html>

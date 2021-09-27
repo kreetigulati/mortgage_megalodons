@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/styles.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../static/css/style.css" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
+
+    <title>Mortgage Megalodons</title>
+</head>
+<nav class="navbar navbar-light" style="background-color: #ffffff;">
+    <div class="col-md-6">
+        <a class="navbar-format" href="{{ url_for('home')}}"> Mortgage Megalodons </a>
+    </div>
+    <div class="col-md-6">
+        <ul class="nav justify-content-end">
+            <a class="nav-item nav-link" style="color: #464660;" href="{{ url_for('prediction')}}">Your Prediction</a>
+            <a class="nav-item nav-link" style="color: #464660;" href="{{ url_for('process')}}">The Model</a>
+        </ul>
+</nav>
+<body>
+    <div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 col-md-push-5">
+						<div class="booking-cta">
+							<h1>Find Your Result!</h1>
+							<h6 style="color: whitesmoke; padding: 2%;"> Complete this form to better understand the likelihood of your mortgage being approved or declined, as well as how to improve your profile so that you can have a stronger application. 
+                            </h6>
+						</div>
+					</div>
+					<div class="col-md-5 col-md-pull-8">
+						<div class="booking-form">
+                            <form method="POST", action="{{url_for('dashboard')}}">
+                                <div class="form-group">
+                                    <span class="form-label">Select your state</span>
+                                    <select name="state" class="form-control">
+                                        <option>AK</option>
+                                        <option>AL</option>
+                                        <option>AR</option>
+                                        <option>AZ</option>
+                                        <option>CA</option>
+                                        <option>CO</option>
+                                        <option>CT</option>
+                                        <option>DC</option>
+                                        <option>DE</option>
+                                        <option>FL</option>
+                                        <option>GA</option>
+                                        <option>GU</option>
+                                        <option>HI</option>
+                                        <option>IA</option>
+                                        <option>ID</option>
+                                        <option>IL</option>
+                                        <option>IN</option>
+                                        <option>KS</option>
+                                        <option>KY</option>
+                                        <option>LA</option>
+                                        <option>MA</option>
+                                        <option>MD</option>
+                                        <option>ME</option>
+                                        <option>MI</option>
+                                        <option>MN</option>
+                                        <option>MO</option>
+                                        <option>MS</option>
+                                        <option>MT</option>
+                                        <option>NC</option>
+                                        <option>ND</option>
+                                        <option>NE</option>
+                                        <option>NH</option>
+                                        <option>NJ</option>
+                                        <option>NM</option>
+                                        <option>NV</option>
+                                        <option>NY</option>
+                                        <option>OH</option>
+                                        <option>OK</option>
+                                        <option>OR</option>
+                                        <option>PA</option>
+                                        <option>PR</option>
+                                        <option>RI</option>
+                                        <option>SC</option>
+                                        <option>SD</option>
+                                        <option>TN</option>
+                                        <option>TX</option>
+                                        <option>UT</option>
+                                        <option>VA</option>
+                                        <option>VI</option>
+                                        <option>VT</option>
+                                        <option>WA</option>
+                                        <option>WI</option>
+                                        <option>WV</option>
+                                        <option>WY</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Loan Amount -->
+                                <div class="form-group">
+                                    <span class="form-label">Loan Amount</span>
+                                    <input name="loan" class="form-control" type="number" placeholder="Enter the desired loan amount.">
+                                </div>
+                                <!-- census tract -->
+                                <div class="form-group">
+                                    <span class="form-label">Loan Term</span>
+                                    <input name="term" class="form-control" type="number">
+                                </div>
+                                <!-- Property Value -->
+                                <div class="form-group">
+                                    <span class="form-label">Property Value</span>
+                                    <input name="value" class="form-control" type="number" placeholder="Enter the estimated property value.">
+                                </div>
+                                <!-- Income -->
+                                <div class="form-group">
+                                    <span class="form-label">What is your annual income?</span>
+                                    <input name="income" class="form-control" type="number" placeholder="Enter your annual income.">
+                                </div>
+                                <!-- type of unit -->
+                                <div class="form-group">
+                                    <span class="form-label">Dwelling category:</span>
+                                    <select name="dwelling" class="form-control">
+                                        <option>Single Family (1-4 Units):Site-Built</option>
+                                        <option>Single Family (1-4 Units):Manufactured</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Occupancy type -->
+                                <div class="form-group">
+                                    <span class="form-label">Select Occupancy Type:</span>
+                                    <select name="occupancy" class="form-control">
+                                        <option>Principal residence</option>
+                                        <option>Second residence</option>
+                                        <option>Investment property</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Pre-approval -->
+                                <div class="form-group">
+                                    <span class="form-label">Select your pre-approval status</span>
+                                    <select name="preapproval" class="form-control">
+                                        <option>Preapproval not requested</option>
+                                        <option>Preapproval requested</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                            
+                                <!-- Loan Type -->
+                                <div class="form-group">
+                                    <span class="form-label">Select your loan type</span>
+                                    <select name="laon-type" class="form-control">
+                                        <option>Conventional (not insure…y FHA, VA, RHS, or FSA)</option>
+                                        <option>Federal Housing Administration insured (FHA)</option>
+                                        <option>Veterans Affairs guaranteed (VA)</option>
+                                        <option>USDA Rural Housing Servi…guaranteed (RHS or FSA)</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Select Purpose of Your Loan -->
+                                <div class="form-group">
+                                    <span class="form-label">Purpose for your loan:</span>
+                                    <select name="loan-purpose" class="form-control">
+                                        <option>Home purchase</option>
+                                        <option>Refinancing</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                
+                                <!-- Lien Status -->
+                                <div class="form-group">
+                                    <span class="form-label">Lien Status:</span>
+                                    <select name="lien" class="form-control">
+                                        <option>Secured by a first lien</option>
+                                        <option>Secured by a subordinate lien</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Line of Credit -->
+                                <div class="form-group">
+                                    <span class="form-label">Line of Credit Type:</span>
+                                    <select name="credit-type" class="form-control">
+                                        <option>Not an open-end line of credit</option>
+                                        <option>Open-end line of credit</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Negative Amortization -->
+                                <div class="form-group">
+                                    <span class="form-label">Type of Amortization:</span>
+                                    <select name="amort" class="form-control">
+                                        <option>No negative amortization</option>
+                                        <option>Negative amortization</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Other Amortization Features -->
+                                <div class="form-group">
+                                    <span class="form-label">Other Amortization Features:</span>
+                                    <select name="amort-features" class="form-control">
+                                        <option>No other non-fully amortizing features</option>
+                                        <option>Other non-fully amortizing features</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Interest payment -->
+                                <div class="form-group">
+                                    <span class="form-label">Type of Interest Payment:</span>
+                                    <select name="interest" class="form-control">
+                                        <option>No interest-only payments</option>
+                                        <option>Interest-only payments</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Balloon Payment -->
+                                <div class="form-group">
+                                    <span class="form-label">Balloon Payment:</span>
+                                    <select name="balloon" class="form-control">
+                                        <option>No balloon payment</option>
+                                        <option>Balloon payment</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Construction Method -->
+                                <div class="form-group">
+                                    <span class="form-label">Property Construction Method:</span>
+                                    <select name="construction" class="form-control">
+                                        <option>Site-built</option>
+                                        <option>Manufactured home</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- For Manufatured -->
+                                <div class="form-group">
+                                    <span class="form-label">If manufactured:</span>
+                                    <select name="manufacturing" class="form-control">
+                                        <option>Not applicable</option>
+                                        <option>Manufactured home and land</option>
+                                        <option>Manufactured home and not land</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- For Manufatured -->
+                                <div class="form-group">
+                                    <span class="form-label">If manufactured, what is the interest?</span>
+                                    <select name="manufacturing-interest" class="form-control">
+                                        <option>Direct ownership</option>
+                                        <option>Indirect ownership</option>
+                                        <option>Paid leasehold</option>
+                                        <option>Unpaid leasehold</option>
+                                        <option>Not applicable</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- applicant credity type -->
+                                <div class="form-group">
+                                    <span class="form-label">Applicant Credit Score Type</span>
+                                    <select name="credit-score-type" class="form-control">
+                                        <option>Equifax Beacon 5.0</option>
+                                        <option>Experian Fair Isaac</option>
+                                        <option>FICO Risk Score Classic 04</option>
+                                        <option>Not applicable</option>
+                                        <option>VantageScore 3.0</option>
+                                        <option>Other credit scoring model</option>
+                                        <option>More than one credit scoring model</option>
+                                        <option>FICO Risk Score Classic 98</option>
+                                        <option>VantageScore 2.0</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- co-applicant credity type -->
+                                <div class="form-group">
+                                    <span class="form-label">Co-Applicant Credit Score Type</span>
+                                    <select name="co-credit-score-type" class="form-control">
+                                        <option>Equifax Beacon 5.0</option>
+                                        <option>Experian Fair Isaac</option>
+                                        <option>FICO Risk Score Classic 04</option>
+                                        <option>Not applicable</option>
+                                        <option>VantageScore 3.0</option>
+                                        <option>Other credit scoring model</option>
+                                        <option>More than one credit scoring model</option>
+                                        <option>FICO Risk Score Classic 98</option>
+                                        <option>VantageScore 2.0</option>
+                                        <option>No co-applicant</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+
+                                <!-- debt to income ratio -->
+                                <div class="form-group">
+                                    <span class="form-label">Select your debt to income ratio.</span>
+                                    <select name="input-debtratio" class="form-control">
+                                        <option><20%</option>
+                                        <option>20%-29%</option>
+                                        <option>30%-35%</option>
+                                        <option>36%-49%</option>
+                                        <option>50%-60%</option>
+                                        <option>>60%</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- applicant age -->
+                                <div class="form-group">
+                                    <span class="form-label">What is your age group?</span>
+                                    <select name="age" class="form-control">
+                                        <option><25</option>
+                                        <option>25-34</option>
+                                        <option>35-44</option>
+                                        <option>45-54</option>
+                                        <option>55-64</option>
+                                        <option>65-74</option>
+                                        <option>>74</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- co applicant age -->
+                                <div class="form-group">
+                                    <span class="form-label">What is your co-applicant's age group?</span>
+                                    <select name="coage" class="form-control">
+                                        <option><25</option>
+                                        <option>25-34</option>
+                                        <option>35-44</option>
+                                        <option>45-54</option>
+                                        <option>55-64</option>
+                                        <option>65-74</option>
+                                        <option>>74</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- applicant race -->
+                                <div class="form-group">
+                                    <span class="form-label">Select the applicant's race.</span>
+                                    <select name="race" class="form-control">
+                                        <option>White</option>
+                                        <option>American Indian or Alaska Native</option>
+                                        <option>Black or African American</option>
+                                        <option>Asian</option>
+                                        <option>Information not provided by applicant in mail, internet, or telephone application</option>
+                                        <option>Vietnamese</option>
+                                        <option>Native Hawaiian or Other Pacific Islander</option>
+                                        <option>Other Asian</option>
+                                        <option>Filipino</option>
+                                        <option>Asian Indian</option>
+                                        <option>Other Pacific Islander</option>
+                                        <option>Native Hawaiian</option>
+                                        <option>Korean</option>
+                                        <option>Samoan</option>
+                                        <option>Chinese</option>
+                                        <option>Japanese</option>
+                                        <option>Not applicable</option>
+                                        <option>Guamanian or Chamorro</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- co-applicant race -->
+                                <div class="form-group">
+                                    <span class="form-label">Select the applicant's race.</span>
+                                    <select name="corace" class="form-control">
+                                        <option>White</option>
+                                        <option>American Indian or Alaska Native</option>
+                                        <option>Black or African American</option>
+                                        <option>Asian</option>
+                                        <option>Information not provided by applicant in mail, internet, or telephone application</option>
+                                        <option>Vietnamese</option>
+                                        <option>Native Hawaiian or Other Pacific Islander</option>
+                                        <option>Other Asian</option>
+                                        <option>Filipino</option>
+                                        <option>Asian Indian</option>
+                                        <option>Other Pacific Islander</option>
+                                        <option>Native Hawaiian</option>
+                                        <option>Korean</option>
+                                        <option>Samoan</option>
+                                        <option>Chinese</option>
+                                        <option>Japanese</option>
+                                        <option>Not applicable</option>
+                                        <option>Guamanian or Chamorro</option>
+                                        <option>No co-applicant</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Observed applicant race-->
+                                <div class="form-group">
+                                    <span class="form-label">How was the applicant's ethnicity observed?</span>
+                                    <select name="race-observed" class="form-control">
+                                        <option>Not collected on the basis of visual observation or surname</option>
+                                        <option>Collected on the basis of visual observation or surname</option>
+                                        <option>Not applicable</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Observed coapplicant race -->
+                                <div class="form-group">
+                                    <span class="form-label">How was the co-applicant's ethnicity observed?</span>
+                                    <select name="corace-observed" class="form-control">
+                                        <option>Not collected on the basis of visual observation or surname</option>
+                                        <option>Collected on the basis of visual observation or surname</option>
+                                        <option>Not applicable</option>
+                                        <option>No co-applicant</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- applicant ethnicity -->
+                                <div class="form-group">
+                                    <span class="form-label">Select your ethnicity.</span>
+                                    <select name="ethnicity" class="form-control">
+                                        <option>Not Hispanic or Latino</option>
+                                        <option>Hispanic or Latino</option>
+                                        <option>Information not provided by applicant in mail, internet, or telephone application</option>
+                                        <option>Mexican</option>
+                                        <option>Other Hispanic or Latino</option>
+                                        <option>Cuban</option>
+                                        <option>Puerto Rican</option>
+                                        <option>Not applicable</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- co-applicant ethnicity -->
+                                <div class="form-group">
+                                    <span class="form-label">Select your ethnicity.</span>
+                                    <select name="coethnicity" class="form-control">
+                                        <option>Not Hispanic or Latino</option>
+                                        <option>Hispanic or Latino</option>
+                                        <option>Information not provided by applicant in mail, internet, or telephone application</option>
+                                        <option>Mexican</option>
+                                        <option>Other Hispanic or Latino</option>
+                                        <option>Cuban</option>
+                                        <option>Puerto Rican</option>
+                                        <option>Not applicable</option>
+                                        <option>No co-applicant</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Observed applicant ethnicity-->
+                                <div class="form-group">
+                                    <span class="form-label">How was the applicant's ethnicity observed?</span>
+                                    <select name="ethnicity-observed" class="form-control">
+                                        <option>Not collected on the basis of visual observation or surname</option>
+                                        <option>Collected on the basis of visual observation or surname</option>
+                                        <option>Not applicable</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Observed coapplicant ethnicity -->
+                                <div class="form-group">
+                                    <span class="form-label">How was the co-applicant's ethnicity observed?</span>
+                                    <select name="coethnicity-observed" class="form-control">
+                                        <option>Not collected on the basis of visual observation or surname</option>
+                                        <option>Collected on the basis of visual observation or surname</option>
+                                        <option>Not applicable</option>
+                                        <option>No co-applicant</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- applicant sex-->
+                                <div class="form-group">
+                                    <span class="form-label">What is the applicant's sex?</span>
+                                    <select name="sex" class="form-control">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Information not provided by applicant in mail, internet, or telephone application</option>
+                                        <option>Applicant selected both male and female</option>
+                                        <option>Not applicable</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- coapplicant sex-->
+                                <div class="form-group">
+                                    <span class="form-label">What is the applicant's sex?</span>
+                                    <select name="cosex" class="form-control">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Information not provided by applicant in mail, internet, or telephone application</option>
+                                        <option>Applicant selected both male and female</option>
+                                        <option>Not applicable</option>
+                                        <option>No co-applicant</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Observed applicant sex-->
+                                <div class="form-group">
+                                    <span class="form-label">How was the applicant's sex observed?</span>
+                                    <select name="sex-observed" class="form-control">
+                                        <option>Not collected on the basis of visual observation or surname</option>
+                                        <option>Collected on the basis of visual observation or surname</option>
+                                        <option>Not applicable</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- Observed coapplicant sex -->
+                                <div class="form-group">
+                                    <span class="form-label">How was the co-applicant's sex observed?</span>
+                                    <select name="cosex-observed" class="form-control">
+                                        <option>Not collected on the basis of visual observation or surname</option>
+                                        <option>Collected on the basis of visual observation or surname</option>
+                                        <option>Not applicable</option>
+                                        <option>No co-applicant</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- AUS -->
+                                <div class="form-group">
+                                    <span class="form-label">Which automated underwriting system was used?</span>
+                                    <select name="aus" class="form-control">
+                                        <option>Not applicable</option>
+                                        <option>Desktop Underwriter (DU)</option>
+                                        <option>Loan Prospector (LP) or Loan Product Advisor</option>
+                                        <option>Guaranteed Underwriting System (GUS)</option>
+                                        <option>Technology Open to Approved Lenders (TOTAL) Scorecard</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- conforming loan amount -->
+                                <div class="form-group">
+                                    <span class="form-label">Conforming loan amount</span>
+                                    <select name="conforming" class="form-control">
+                                        <option>C</option>
+                                        <option>NC</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                </div>
+                                <!-- county code -->
+                                <div class="form-group">
+                                    <span class="form-label">Enter your County Code</span>
+                                    <input name="county" class="form-control" type="number" placeholder="Enter the county code">
+                                </div>
+                                <!-- census tract -->
+                                <div class="form-group">
+                                    <span class="form-label">Enter yur Census Tract</span>
+                                    <input name="census" class="form-control" type="number">
+                                </div>
+                                <!-- tract_population -->
+                                <div class="form-group">
+                                    <span class="form-label">Enter tract_population</span>
+                                    <input name="population" class="form-control" type="number">
+                                </div>
+                                <!-- tract_minority_population_percent -->
+                                <div class="form-group">
+                                    <span class="form-label">Enter tract_minority_population_percent</span>
+                                    <input name="tract_minority" class="form-control" type="number">
+                                </div>
+                                <!-- ffiec_msa_md_median_family_income-->
+                                <div class="form-group">
+                                    <span class="form-label">Enter Median Family Income</span>
+                                    <input name="median_fam_income" class="form-control" type="number">
+                                </div>
+                                <!-- tract_to_msa_income_percentage -->
+                                <div class="form-group">
+                                    <span class="form-label">Enter MSA Income</span>
+                                    <input name="msa_income" class="form-control" type="number">
+                                </div>
+                                <!-- tract_one_to_four_family_homes-->
+                                <div class="form-group">
+                                    <span class="form-label">Enter tract_one_to_four_family_homes</span>
+                                    <input name="one_to_four" class="form-control" type="number">
+                                </div>
+                                <!-- tract_median_age_of_housing_units-->
+                                <div class="form-group">
+                                    <span class="form-label">Age of housing units</span>
+                                    <input name="age_housing" class="form-control" type="number">
+                                </div>
+
+                                
+
+                                <div class="form-btn">
+                                    <button id="click-me">Check Result!</button>
+                                </div>        
+                            </form>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script> -->
+    <!-- <script src="../static/plots/index.js" type="text/javascript"></script> -->
+    <!-- <script type="text/javascript" src="../static/json/combined_encoded.json"></script> -->
+
+</body>
+</html>
