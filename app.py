@@ -8,7 +8,7 @@ from tensorflow.keras.models import load_model
 import re
 
 
-model = keras.models.load_model("mortgage_test_13_1_4.2.h5")
+model = keras.models.load_model("mortgage_test_13_1_4_final.h5")
 
 app = Flask(__name__)
 
