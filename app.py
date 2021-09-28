@@ -8,7 +8,7 @@ from tensorflow.keras.models import load_model
 import re
 
 
-model = keras.models.load_model("mortgage_test_13_1_4_final.h5")
+model = keras.models.load_model("mortgage_megalodons_model.h5")
 
 app = Flask(__name__)
 
@@ -184,17 +184,17 @@ def dashboard():
     else:
         data11=1
 
-# amortization validation
-    if request.form['amort'] == 'No negative amortization':
-        data12=2
-    else:
-        data12=1
+# # amortization validation
+#     if request.form['amort'] == 'No negative amortization':
+#         data12=2
+#     else:
+#         data12=1
 
-# other amortization features validation
-    if request.form['amort-features'] == 'No other non-fully amortizing features':
-        data13=2
-    else:
-        data13=1
+# # other amortization features validation
+#     if request.form['amort-features'] == 'No other non-fully amortizing features':
+#         data13=2
+#     else:
+#         data13=1
     
 # interest payment validation
     if request.form['interest'] == 'No interest-only payments':
@@ -547,7 +547,7 @@ def dashboard():
         data45=5
 
 #modeling
-    arr = np.array([[data1, data2, data3, data4, data5, data6, data7, data8, data9, data10,data11, data12, data13, data14, data15, data16, data17, data18, data19, data20,data21, data22, data23, data24, data25, data26, data27, data28, data29, data30, data31, data32, data33, data34, data35, data36, data37, data38, data39, data40,data41, data42, data43, data44, data45]], dtype=np.float32)
+    arr = np.array([[data1, data2, data3, data4, data5, data6, data7, data8, data9, data10,data11, data14, data15, data16, data17, data18, data19, data20,data21, data22, data23, data24, data25, data26, data27, data28, data29, data30, data31, data32, data33, data34, data35, data36, data37, data38, data39, data40,data41, data42, data43, data44, data45]], dtype=np.float32)
     pred = model.predict(arr)
 #predictions prints out the numpy array
     classes_x = np.argmax(pred,axis=1)
